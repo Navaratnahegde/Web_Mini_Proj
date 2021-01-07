@@ -1,0 +1,238 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Covid-19 Health Care</title>
+	<link href="project2.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/png" href= https://i.pinimg.com/736x/11/d1/84/11d18400bfc45558d548749aee9f15c9.jpg>
+
+
+</head>
+<body>
+	<header>
+		<div class="head">
+			<h2 style="color:black; font-family: cursive;">Covid-19 Health Care</h2>
+		</div>
+		<nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          
+          <li><a href="pages/plasma/index.html" class="active">Donate Plasma</a></li>
+          <li><a  class="active"id="vcart">Book Now</a></li>
+          <li><a href="cart.html" class="active">Your Order</a></li>
+          <li><a href="pages/warriers/index.html" class="active">Corona Warriers</a></li>
+          <li><a href="pages/feedback/index.html" class="active">Feedback</a></li>
+          <li style="display: none; " id="login"><a href="login.html" class="active">Login/Signup</a></li>
+          <li style="display: none; " id="user"><a href="#" class="active" id="username" onclick="logout()"></a></li>
+
+         
+        </ul>
+      </nav>
+		</header>
+		<img class="w3-image" src="2-87.jpg" alt="1947-Delight in every bites" width="1600" height="800">
+      <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+        
+      </div>
+     <div class="w3-main " style="width:100%;margin-top:100px;" id="food">
+  
+  </body>
+  
+ <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAfcAhicLpI4yUGLAE5cbMapGQPAMxy4a0",
+    authDomain: "miniproject-e1b7d.firebaseapp.com",
+    databaseURL: "https://miniproject-e1b7d-default-rtdb.firebaseio.com",
+    projectId: "miniproject-e1b7d",
+    storageBucket: "miniproject-e1b7d.appspot.com",
+    messagingSenderId: "810421413852",
+    appId: "1:810421413852:web:97ccadd0a2e83601b9d119"
+  };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+      let formMessage = firebase.database().ref('HospitalData');
+      let formMessage2 = firebase.database().ref('category');
+      let formMessage3=firebase.database().ref('user');
+      let formMessage4=firebase.database().ref('cart');
+      formMessage3.on('value',showUser);
+      vcart.addEventListener('click',showCart);
+
+    
+      
+
+      function showUser(data){
+        
+       var sc3=data.val();
+
+       key=Object.keys(sc3);
+       if(sc3==null){
+        localStorage.clear();
+       }
+      
+        if(key!=null){
+          document.getElementById("username").innerHTML=sc3[key].name;
+          document.getElementById("user").style.display="block";
+          document.getElementById("login").style.display="none"
+        }
+        else{
+          document.getElementById("login").style.display="block"
+        }
+
+      }
+      function logout(){
+        var answer=window.confirm("Are you sure, you want to logout ?")
+        if(answer){
+        window.localStorage.removeItem('loggedinuser')
+        window.location="index.html"
+      }
+      }
+      formMessage2.on('value',showCategory,errData);
+      var sc,sc2;
+
+      function showCategory(data){
+        sc2=data.val();
+        var keys=Object.keys(sc2)
+
+        for(var i=0;i<keys.length;i++){
+          var k=keys[i];
+          var category=sc2[k].categoryname;
+          document.getElementById("food").innerHTML+=
+
+          `<section class="w3-teal" style="background-color:orange"><h1 class="w3-xxlarge  abc" >`+category+`</h1>
+          <div class="w3-row-padding w3-padding-16 w3-center" id="`+category+`">
+          </div></section>`
+          }
+          formMessage.on('value',gotData,errData);
+      }
+
+
+
+      var fname;
+      
+      function gotData(data){
+           sc=data.val();
+          var keys =Object.keys(sc)
+          
+          for(var i=0;i<keys.length;i++){
+              var k=keys[i];
+              fname=sc[k].HospitalName;
+              var description = sc[k].Description;
+              var price=sc[k].HospitalPrice;
+              var image=sc[k].Image;
+              var category=sc[k].HospitalCat;
+              
+              document.getElementById(category).innerHTML+=
+          
+              `<div class="w3-quarter">
+              <a onclick=opennewpage("`+k+`")>
+              <img src="`+image+`" alt="Masala dosa" style="width:100%;height:200px;object-fit:cover;border:1px solid red;">
+          </a>
+              <h3 style="color:black;">`+fname+`</h3>
+              <p id="desc`+i+`" style="display:none">`+description+`</p>
+              <button id="myBtn" class="b11" onclick=showmodel("myModal`+i+`")>Book Now</button>
+
+              <div id="myModal`+i+`" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <span class="close" onclick=hidemodel("myModal`+i+`")>&times;</span>
+                    <h2>Your orders</h2>
+                  </div>
+                  <div class="modal-body">
+                    <h3 style="color:black">`+fname+`</h3>
+                    <p>Cost              = `+price+`Rs/- </p>
+                    <p>GST               = 10%    </p>
+                    <p>Delivery charges  = 35Rs/- </p>
+                    <label for="Quantity" style="color: orange">Quantity     =</label>
+                    <input type="number" id="quantity`+i+`" name="Quantity">
+                    <p>Total cost        =130     </p>
+                  </div>
+                  <div class="modal-footer">
+               <button class="b1" onclick=addCart("`+price+`","quantity`+i+`")>Confrim</button>
+                  
+                  </div>
+                </div>
+            </div>
+               <button id="btn`+i+`" onclick=showdesc("desc`+i+`","btn`+i+`") class="b11" >View detail</button>
+            </div>`
+          }
+          
+      }
+      function addCart(price,id){
+       
+        var quantity=document.querySelector('#'+id).value
+
+        let newformMessage=formMessage4.push();
+        newformMessage.set({
+         name:fname,
+          price:price,
+          Quantity:quantity,
+          userid:key,
+          status:"Active"
+          });
+        alert("data added in cart")
+        window.location="cart.html"
+      
+     
+      }
+      function opennewpage(foodkey){
+        
+        window.localStorage.setItem('foodpage',foodkey)
+        window.location="product.html"
+     
+      }
+      function errData(){
+
+      }
+     function showmodel(id){
+      if(key!=null){
+        document.getElementById(id).style.display="block"
+      }
+      else{
+        window.location="login.html"
+      }
+      }
+      function hidemodel(id){
+        document.getElementById(id).style.display="none"
+      }
+       let count=-1;
+       function showdesc(des,btnid){
+    
+        count++;
+        if(count%2==0){
+          document.getElementById(des).style.display="block"
+          document.getElementById(btnid).innerHTML="Hide"
+        }
+        else{
+          document.getElementById(des).style.display="none"
+          document.getElementById(btnid).innerHTML="View Details"
+        }
+      }
+
+        function showCart(){
+        if(key!=null){
+            window.location="cart.html"
+          }
+          else{
+            window.location="login.html"
+          }
+        }
+        
+  </script>
+    
+
+	</html>
+
+				
+				
+				

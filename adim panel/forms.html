@@ -1,0 +1,455 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ADMIN-FORM</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+
+    <!-- Style-sheets -->
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Bootstrap Css -->
+    <!-- Common Css -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--// Common Css -->
+    <!-- Nav Css -->
+    <link rel="stylesheet" href="css/style4.css">
+    <!--// Nav Css -->
+    <!-- Fontawesome Css -->
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <!--// Fontawesome Css -->
+    <!--// Style-sheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+   
+                <!-- main-heading -->
+            <h2 class="main-title-w3layouts mb-2 text-center">Forms</h2>
+            <!--// main-heading -->
+
+            <!-- Forms content -->
+            <section class="forms-section">
+
+              
+                <!--// Forms-3 -->
+                <!-- Forms-4 -->
+                <div class="outer-w3-agile mt-3">
+                    <h4 class="tittle-w3-agileits mb-4">Add Hospital Data</h4>
+                    <div class="row validform">
+                        <div class="col-md-4 order-md-2 mb-4 validform1">
+                            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="text-muted">Hospital Data</span>
+                                <span class="badge badge-secondary badge-pill" id="count">Loding...</span>
+                            </h4>
+                            <ul class="list-group mb-3" id="fooditems">
+                                
+                            </ul>
+
+                            
+                        </div>
+                        <div class="col-md-8 order-md-1 validform2">
+                            <h4 class="mb-3">Add details here</h4>
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Enter Area</label>
+                                <input type="text" class="form-control" id="CategoryName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid hospital  name is required.
+                                </div>
+                            </div>
+                            <button class="bt1" style="padding:0.2rem;background-color:white; color:black;border-radius: 8px;border-color: black;margin-bottom:3%; " id="btnn" >Create Category</button>
+                            <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName"> Hospital name</label>
+                                        <input type="text" class="form-control" id="hospitalname" placeholder="" value="" required="">
+                                        <div class="invalid-feedback">
+                                            Valid Hosital  name is required.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName">Price</label>
+                                        <input type="number" class="form-control" id="price" placeholder="" value="" required="">
+                                        <div class="invalid-feedback">
+                                            Valid  price is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="username">Bed Id</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">id</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="hospitalid" placeholder="" required="">
+                                        <div class="invalid-feedback" style="width: 100%;">
+                                            Your bed id  is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email">Select Category
+                                    </label>
+                                    <input type="text"   name="" placeholder="select" list="select" id="Category">
+                                             <datalist id="select">
+                                                 
+                                                 
+                                             </datalist><br><br>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid  description for bed Availability.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email"> Upload Image
+                                    </label>
+                                    <input type="file" class="form-control" id="fileSubmit">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid  description for bed Availability.
+                                    </div>
+                                </div>
+                                <progress value="0" max="100" id="uploader">0%</progress>
+                                <p id="message"></p>
+                                
+
+                                <div class="mb-3">
+                                    <label for="email"> Description
+                                    </label>
+                                    <textarea type="text" class="form-control" id="description" placeholder="write something about food" style="height: 8em;"></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid  description for bed.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email"> Detail Description
+                                    </label>
+                                    <textarea type="text" class="form-control" id="descript" placeholder="write detail description about food" style="height: 15em;"></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid  description for bed.
+                                    </div>
+                                </div>
+                                
+                                <hr class="mb-4">
+                                <button id="uploadbtn" class="btn btn-primary btn-lg btn-block error-w3l-btn" type="submit">Upload  Data</button>
+                                <button id="updatebtn" class="btn btn-primary btn-lg btn-block error-w3l-btn" type="submit" style="display: none;">Update  Data</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--// Forms-4 -->
+            </section>
+
+           
+        </div>
+    </div>
+
+
+    <!-- Required common Js -->
+    <script src='js/jquery-2.2.3.min.js'></script>
+    <!-- //Required common Js -->
+
+    <!-- Sidebar-nav Js -->
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+    <!--// Sidebar-nav Js -->
+
+    <!-- Validation Script -->
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+    <!--// Validation Script -->
+
+    <!-- dropdown nav -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <!-- //dropdown nav -->
+
+    <!-- Js for bootstrap working-->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- //Js for bootstrap working -->
+
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+    var firebaseConfig = {
+    apiKey: "AIzaSyAfcAhicLpI4yUGLAE5cbMapGQPAMxy4a0",
+    authDomain: "miniproject-e1b7d.firebaseapp.com",
+    databaseURL: "https://miniproject-e1b7d-default-rtdb.firebaseio.com",
+    projectId: "miniproject-e1b7d",
+    storageBucket: "miniproject-e1b7d.appspot.com",
+    messagingSenderId: "810421413852",
+    appId: "1:810421413852:web:97ccadd0a2e83601b9d119"
+  };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    let formMessage = firebase.database().ref('HospitalData');
+    let formMessage2 = firebase.database().ref('category');
+    formMessage.on('value',gotData,errData)
+    formMessage2.on('value',addCat,errData)
+    var sc,sc2;
+    var uploader=document.getElementById('uploader');
+    fileSubmit.addEventListener('change',uploadFile)
+    btnn.addEventListener('click',createCat)
+
+    
+    function createCat(){
+        count=0;
+        var category=document.querySelector('#CategoryName').value;
+        if(sc2==null){
+            sc2=0;
+        }
+        keys=Object.keys(sc2);
+        for(var i=0;i<keys.length;i++){
+            var k=keys[i];
+            if(sc2[k].categoryname==category){
+                count++;
+                break;
+            }
+        }
+        if(count==0){
+        let newFormMessage2=formMessage2.push();
+        newFormMessage2.set({
+            categoryname:category,
+            status:"active"
+        })
+        alert("category uploaded successfully")
+        window.location="forms.html"
+    }
+    else{
+        alert("category already exist");
+    }
+}  
+
+    function addCat(data){
+         sc2=data.val();
+        var keys=Object.keys(sc2);
+        $('#select').empty()
+        for(var i=0;i<keys.length;i++){
+            var k=keys[i]
+            var cat=sc2[k].categoryname;
+            document.getElementById("select").innerHTML+=
+            `<option value="`+cat+`"/>`
+        }
+    } 
+
+    function gotData(data){
+         sc=data.val();
+        var keys =Object.keys(sc)
+        $('#fooditems').empty()
+        for(var i=0;i<keys.length;i++){
+            var k=keys[i]
+            var name=sc[k].HospitalName
+            var description = sc[k].Description
+            var price=sc[k].HospitalPrice
+            var image=sc[k].Image
+            document.getElementById("fooditems").innerHTML+=
+        
+            `<li class="list-group-item d-flex justify-content-between lh-condensed">
+                                    <div>
+                                         <image src="`+image+`" width="70">
+                                        <h6 class="my-0">`+name+`</h6>
+                                        <small class="text-muted">`+description+`</small>
+
+                                    </div>
+                                    <span class="text-muted">`+price+`</span>
+                                    <i class ="fa fa-trash" style="curser:pointer; color:red;" onclick=deleteData("`+k+`")></i>
+                                    <i class ="fa fa-pencil" style="curser:pointer; color:black;" onclick=updateData("`+k+`")></i>
+                                </li>`
+
+        }
+        document.getElementById("count").innerHTML=keys.length
+
+    }
+    function errData(){
+
+    }
+    function deleteData(key){
+        var url=sc[key].Image;
+        var desertRef=firebase.storage().refFromURL(url);
+        var answer=window.confirm("Are you sure, you want to Delete ?")
+              if(answer){
+                desertRef.delete().then(function() {
+                  firebase.database().ref("HospitalData").child(key).remove();
+                  alert("Hospital Data Deleted")// File deleted successfully
+              }).catch(function(error) {
+                  alert("Uh-oh, an error occurred! Please Try Again")
+                  // Uh-oh, an error occurred!
+                });
+
+              }
+
+    }
+    
+    
+    function uploadFile(e){
+        selectedFile=e.target.files[0]
+        uploadbtn.addEventListener('click',pushData)
+    }
+
+    function updateData(key){
+        var name=sc[key].HospitalName
+        var id=sc[key].HospitalId
+        var description = sc[key].Description
+        var descript=sc[key].Descript
+        var price=sc[key].HospitalPrice
+        var Category=sc[key].HospitalCat
+        $('#hospitalname').val(name)
+        $('#hospitalid').val(id)
+        $('#description').val(description)
+        $('#price').val(price)
+        $('#Category').val(Category)
+        $('#descript').val(descript)
+        document.getElementById("uploadbtn").style.display="none"
+        document.getElementById("updatebtn").style.display="block"
+
+        updatebtn.addEventListener('click',function(){
+            var HospitalName=document.querySelector('#hospitalname').value;
+            var HospitalPrice=document.querySelector('#price').value;
+             var HospitalId=document.querySelector('#hospitalid').value;
+             var HospitalCat=document.querySelector('#Category').value;
+             var Description=document.querySelector('#description').value;
+             var descri=document.querySelector('#descript').value;
+             alert(HospitalCat)
+    formMessage.child(key).update({HospitalName,Description,HospitalPrice,HospitalCat,HospitalId})
+             alert("Data updated Successfully")
+             window.location="forms.html";
+
+             });
+
+    }
+
+    function sendData(Hospitalname,Price,Hospitalid,Hospitalcat,Description,Descri,urls){
+    let newFormMessage=formMessage.push();
+    newFormMessage.set({
+       HospitalName   :Hospitalname,
+       HospitalPrice  :Price,
+       HospitalId     :Hospitalid,
+       HospitalCat    :Hospitalcat,
+        Description:Description,
+        Descript   :Descri,
+        Image     :urls,
+
+        status:"Active"
+    });
+    alert("Data uploaded successfully")
+    window.location="forms.html"
+
+}
+  function pushData(){
+    var hospitalname=document.querySelector('#hospitalname').value;
+    var price=document.querySelector('#price').value;
+     var hospitalid=document.querySelector('#hospitalid').value;
+     var hospitalcat=document.querySelector('#Category').value;
+     var description=document.querySelector('#description').value;
+     var descri=document.querySelector('#descript').value;
+     
+
+      const  storageService = firebase.storage();
+          var uploadTask=storageService.ref(selectedFile.name).put(selectedFile);
+
+
+          
+          uploadTask.on('state_changed', function(snapshot){
+
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          uploader.value = percentage;
+
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          document.getElementById("message").innerHTML = progress;
+          switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+          document.getElementById("message").innerHTML = "Upload Paused";
+          console.log('Upload is paused');
+          break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+          document.getElementById("message").innerHTML = "File is uploading"+ " "+progress+"%";
+
+          break;
+        }
+    }, function(error) {
+    console.log(error);
+    // Handle unsuccessful uploads
+    }, function() {
+    document.getElementById("message").innerHTML = "Uploaded"+ " "+progress+"%";
+    // Handle successful uploads on complete
+    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+    uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    console.log('File available at', downloadURL);
+    urls = downloadURL;
+    sendData(hospitalname,price,hospitalid,hospitalcat,description,descri,urls)
+      });
+    });
+
+
+}
+
+</script>
+
+
+</html>

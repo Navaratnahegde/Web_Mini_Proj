@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="cart.css"  rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+
+
+</head>
+<body>
+ <header>
+    <div class="head">
+      <h2 style="color:black; font-family: cursive;">Hospital</h2>
+    </div>
+    <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          
+          <li><a href="#china" class="active">About Us</a></li>
+          <li><a  class="active"id="vcart">Book Now</a></li>
+          <li><a href="#" class="active">Your Order</a></li>
+          <li><a href="#" class="active">Corona Warriers</a></li>
+          <li><a href="#" class="active">Feedback</a></li>
+          
+
+         
+        </ul>
+      </nav>
+    </header>
+
+<h2>Responsive Checkout Form</h2>
+<p>Resize the browser window to see the effect. When the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other.</p>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname" ><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+        </label>
+        <button class="btn" id="bp">Place Order</button>
+      
+    </div>
+  </div>
+  <div class="col-25" >
+    <div class="container"  >
+          <h4 id="Cart" >Cart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity<span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b id="count"></b></span></h4>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b id="total"></b></span></p>
+  </div>
+</div>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAfcAhicLpI4yUGLAE5cbMapGQPAMxy4a0",
+    authDomain: "miniproject-e1b7d.firebaseapp.com",
+    databaseURL: "https://miniproject-e1b7d-default-rtdb.firebaseio.com",
+    projectId: "miniproject-e1b7d",
+    storageBucket: "miniproject-e1b7d.appspot.com",
+    messagingSenderId: "810421413852",
+    appId: "1:810421413852:web:97ccadd0a2e83601b9d119"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  let formMessage4=firebase.database().ref('cart');
+  let formMessage5=firebase.database().ref('orders')
+  formMessage4.on('value',gotData,errData);
+ bp.addEventListener('click',pushData)
+
+  function pushData(){
+    var fName=document.querySelector('#fname').value;
+    var Email=document.querySelector('#email').value;
+    var Address=document.querySelector('#adr').value;
+    var City=document.querySelector('#city').value;
+    var State=document.querySelector('#state').value;
+    var Zip=document.querySelector('#zip').value;
+
+    if(fName!=""&&Email!=""&&Address!=""&&City!=""&&State!=""&&Zip!=""){
+          sendData(fName,Email,Address,City,State,Zip)
+        }
+        else{
+          alert("please enter the details");
+        }
+
+
+  }
+
+  function sendData(Fname,Email,Address,City,State,Zip){
+    var newformMessage5=formMessage5.push();
+    newformMessage5.set({
+      Fname:Fname,
+      email:Email,
+      address:Address,
+      city:City,
+      state:State,
+      zip:Zip,
+      userid:key,
+      staus:"Active"
+
+    });
+    alert("Data uploaded successfully");
+    window.location="index.html"
+
+
+  }
+
+  function gotData(data){
+    var user=window.localStorage.getItem("loggedinuser")
+    var sc4=data.val()
+    var keys=Object.keys(sc4)
+   // $('#Cart').empty()
+    var sum=0;
+      for(var i=0;i<keys.length;i++){
+      var k=keys[i];
+      var Name=sc4[k].name;
+      var Price=sc4[k].price;
+      var Key=sc4[k].userid;
+      
+      var quantity=sc4[k].Quantity;
+      Price=Price*parseInt(quantity)
+     
+
+      if(user==Key){
+
+      
+      document.getElementById("Cart").innerHTML+=
+        
+      `<p><a href="#">`+Name+`</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>`+quantity+`</span><span class="price">`+Price+`</span></p>
+      <i class ="fa fa-trash" style="curser:pointer; color:red;" onclick=deleteData("`+k+`")></i>`
+      sum=sum+parseInt(Price)
+    }
+    }
+    document.getElementById("count").innerHTML=keys.length
+    document.getElementById("total").innerHTML=sum
+
+  }
+  function errData(){
+
+  }
+  function deleteData(key){
+      
+      var answer=window.confirm("Are you sure, you want to Delete ?")
+            if(answer){
+                
+                firebase.database().ref("cart").child(key).remove();
+              alert("Food Data Deleted")// File deleted successfully
+              window.location="cart.html" 
+              }
+             
+            }
+
+  
+  
+</script>
+</html>

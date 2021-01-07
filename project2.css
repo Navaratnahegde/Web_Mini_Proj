@@ -1,0 +1,233 @@
+body{
+	background-color: white;
+}
+header{
+	position: fixed;
+	width:100%;
+	margin:auto;
+	
+	z-index:999;
+	background-color:white;
+}
+html{
+	scroll-behavior: smooth;
+	
+}
+h3{
+	color:white;
+}
+p{
+	color:orange;
+}
+.head{
+	float:left;
+	color:white;
+	font-family: cursive;
+	font-size: 
+	
+
+}
+.abc{
+	color:gold;
+	text-align: center;
+	font-family: cursive;
+}
+.efg{
+	color:gold;
+	text-align: center;
+	font-family: cursive;
+}
+
+
+nav{
+	float:right;
+}
+
+li{
+	display:inline;
+	padding:1rem;
+}
+li a{
+	color:white;
+	text-decoration: none;
+	font-weight: bold;
+
+}
+li a:hover{
+	 background-color:#42c2f5;
+	 padding:20px;
+	 border-radius: 50px;
+	 color:black;
+}
+
+.b11{
+	padding:0.5rem;
+	border-radius:20px;
+	background-color: gold;
+	color:black;
+	width:124px;
+	border:none;
+	margin-bottom: 10%;
+}
+
+
+.dropdown {
+
+   overflow: hidden;
+
+ }
+
+ .dropdown .dropbtn {
+   font-size: 16px;
+   border: none;
+   outline: none;
+   color: white;
+   padding: 14px 16px;
+   background-color: inherit;
+   font-family: inherit;
+   margin: 0;
+ }
+
+ .navbar a:hover, .dropdown:hover .dropbtn {
+   background-color: red;
+ }
+
+ .dropdown-content {
+   display: none;
+   position: absolute;
+   background-color: #f9f9f9;
+   min-width: 160px;
+   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index: 1;
+   margin-left: 5%;
+ }
+
+ .dropdown-content a {
+   float: none;
+   color: black;
+   padding: 12px 16px;
+   text-decoration: none;
+   display: block;
+   text-align: left;
+ }
+
+ .dropdown-content a:hover {
+   background-color: #ddd;
+ }
+
+ .dropdown:hover .dropdown-content {
+   display: block;
+ }
+ .dropdown-content a:hover {background-color: #ddd;}
+
+ .dropdown:hover .dropdown-content {display: block;}
+
+ .dropdown:hover .dropbtn {background-color:lightblue;}
+
+.active{
+	color:gold;
+}
+
+.category{
+	color:white;
+	margin-top: 1%;
+	display: flex;
+	text-align: center;
+	font-family: cursive;
+}
+
+
+.Pizza,.Masaladosa,.noodals,.friedrice{
+	padding-left: 1rem;
+}
+h4{
+	font-size: 1rem;
+	margin:3%;
+}
+.btn{
+	background-color: grid;
+	padding: 1rem;
+	border:none;
+	border-radius: 8px;
+	margin-left:44%; 
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: black;
+  color: white;
+  text-align:center;
+}
+
+.modal-body {padding: 2px 16px;text-align: center;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: black;
+  color: white;
+  text-align:center;
+}
+.b1{
+	background color:grid;
+	padding: 0.5rem;
+	border:none;
+	
+	 
+}
+
+
+

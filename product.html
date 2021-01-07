@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="project2.css" rel="stylesheet">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+</style>
+<body>
+
+      <header>
+    <div class="head">
+      <h2 style="color:black; font-family: cursive;">Hospital</h2>
+    </div>
+    <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          
+          <li><a href="pages/plasma/index.html" class="active">Donate Plasma</a></li>
+          <li><a href="index.html#" class="active"id="vcart">Book Now</a></li>
+          <li><a href="cart.html" class="active">Your Order</a></li>
+          <li><a href="pages/warriers/index.html" class="active">Corona Warriers</a></li>
+          <li><a href="pages/feedback/index.html" class="active">Feedback</a></li>
+          
+          
+
+         
+        </ul>
+      </nav>
+    </header>
+    
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    
+    </div>
+  </div>
+</body>
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAfcAhicLpI4yUGLAE5cbMapGQPAMxy4a0",
+    authDomain: "miniproject-e1b7d.firebaseapp.com",
+    databaseURL: "https://miniproject-e1b7d-default-rtdb.firebaseio.com",
+    projectId: "miniproject-e1b7d",
+    storageBucket: "miniproject-e1b7d.appspot.com",
+    messagingSenderId: "810421413852",
+    appId: "1:810421413852:web:97ccadd0a2e83601b9d119"
+  };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    let formMessage=firebase.database().ref('HospitalData');
+    let formMessage4=firebase.database().ref('cart');
+    formMessage.on('value',gotData,errData)
+    var sc;
+    var key=window.localStorage.getItem('foodpage');
+    function gotData(data){
+      sc=data.val();
+    
+      document.getElementById("about").innerHTML+=
+      `<div class="w3-col m6 w3-padding-large">
+     <img src="`+sc[key].Image+`" id="imagepart" width="500">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center" style="color:gold" id="mainheading">`+sc[key].HospitalName+`</h1><br>
+      <h5 class="w3-center" style="color:gold">It is the favorite food of south indians.</h5>
+      <p class="w3-large">`+sc[key].Description+`</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">`+sc[key].Descript+`</p>
+      <button id="myBtn" class="b11" onclick=showmodel("myModal")>Add to cart</button>
+    
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick=hidemodel("myModal")>&times;</span>
+      <h2>Your Cart</h2>
+    </div>
+    <div class="modal-body">
+      <h3 style="color:black">`+sc[key].HospitalName+`</h3>
+      <p>Cost              = `+sc[key].hospitalPrice+`Rs/- </p>
+      <p>GST               = 10%    </p>
+      <p>Delivery charges  = 35Rs/- </p>
+      <label for="Quantity" style="color: orange">Quantity     =</label>
+      <input type="number" id="Quantity" name="Quantity">
+      <p>Total cost        =130     </p>
+    </div>
+    <div class="modal-footer">
+    <button class="b1" onclick=addCart("`+sc[key].HospitalName+`","`+sc[key].FoodPrice+`","Quantity")>Confrim</button>
+    
+    </div>
+  </div>
+
+</div>`   
+    
+    }
+    function addCart(fname,price,id){
+     
+      var quantity=document.querySelector('#'+id).value
+
+      let newformMessage=formMessage4.push();
+      newformMessage.set({
+       name:fname,
+        price:price,
+        Quantity:quantity,
+        userid:key,
+        status:"Active"
+        });
+      alert("data added in cart")
+      window.location="cart.html"
+    
+    
+    }
+    function errData(){
+
+    }
+    function showmodel(id){
+      if(key!=null){
+      document.getElementById(id).style.display="block"
+    }
+    else{
+      window.location="login.html"
+    }
+    }
+    function hidemodel(id){
+      document.getElementById(id).style.display="none"
+    }
+   
+
+  
+  </script>
+  
+</html>
